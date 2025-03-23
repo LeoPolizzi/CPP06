@@ -21,9 +21,7 @@ e_type	getType(std::string const &input)
 	i = 0;
 	if (input.length() == 1 && !isdigit(input[0]))
 		return (CHAR);
-	else if (input == "-inff" || input == "+inff" || input == "nanf")
-		return (SPECIAL);
-	else if (input == "-inf" || input == "+inf" || input == "nan")
+	else if (input == "-inff" || input == "+inff" || input == "nanf" || input == "-inf" || input == "+inf" || input == "nan")
 		return (SPECIAL);
 	if (input[i] == '-' || input[i] == '+')
 		i++;
@@ -110,10 +108,12 @@ void	convertInt(std::string const &input)
 	longVal = std::strtol(input.c_str(), NULL, 10);
 	i = static_cast<int>(longVal);
 	c = static_cast<char>(longVal);
-	if (isprint(c) && (i >= 0 && i <= 127))
+	if (isprint(c))
 		std::cout << "Char: " << c << std::endl;
-	else
+	else if (i >= 0 && i <= 127)
 		std::cout << "Char: Non displayable" << std::endl;
+	else
+		std::cout << "Char: Impossible" << std::endl;
 	if (longVal < MIN_INT || longVal > MAX_INT || errno == ERANGE)
 		std::cout << "Int: Overflow" << std::endl;
 	else
@@ -173,10 +173,12 @@ void	convertDouble(std::string const &input)
 	f = static_cast<float>(d);
 	i = static_cast<int>(d);
 	c = static_cast<char>(d);
-	if (isprint(c) && (d >= 0 && d <= 127))
+	if (isprint(c))
 		std::cout << "Char: " << c << std::endl;
-	else
+	else if (d >= 0 && d <= 127)
 		std::cout << "Char: Non displayable" << std::endl;
+	else
+		std::cout << "Char: Impossible" << std::endl;
 	if (d < MIN_INT || d > MAX_INT || errno == ERANGE)
 		std::cout << "Int: Overflow" << std::endl;
 	else

@@ -25,7 +25,6 @@ ScalarConverter::ScalarConverter(ScalarConverter const &src)
 
 ScalarConverter &ScalarConverter::operator=(ScalarConverter const &src)
 {
-	std::cout << "Assignation operator called" << std::endl;
 	(void)src; // Nothing to copy in this class
 	return *this;
 }
